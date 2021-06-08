@@ -1,10 +1,10 @@
 <template>
   <div>
 
-    <div  v-if="org.type === 'input'" class="pt" :class="active ? 'new new-input' : 'bb'">
+    <div v-if="org.type === 'input'" class="pt" :class="active ? 'new new-input' : 'bb'">
       <div v-for="i in org.elem" :key="i">
         <div :class="active ? 'aligh-top' : '' ">
-          <el-input v-model="name" class="not-input"></el-input>
+          <el-input v-model="org.name" class="not-input"></el-input>
           <el-button plain icon="el-icon-close" @click="delet(org.id)" v-if="active"></el-button>
         </div>
         <el-input></el-input>
@@ -13,27 +13,29 @@
 
     <div v-if="org.type === 'check'" class="pt" :class="active ? 'new new-check' : 'bb'">
       <div :class="active ? 'aligh-top' : '' ">
-        <el-input v-model="name" class="not-input"></el-input>
-        <el-button icon="el-icon-close" @click="delet(org.id)" v-if="active"></el-button>
+        <el-input v-model="org.name" class="not-input"></el-input>
+        <el-button plain icon="el-icon-close" @click="delet(org.id)" v-if="active"></el-button>
       </div>
-      <div v-for="i in org.check" :key="i" class="item">
+      <div v-for="i, index in org.check" :key="index" class="item">
         <div>
           <el-checkbox>
-            {{i.name}}
+            <el-input v-model="i.name" class="not-input"></el-input>
           </el-checkbox>
         </div>
-        <el-button icon="el-icon-close" @click="close(i, org.id)" v-if="active"></el-button>
+        <el-button icon="el-icon-close" @click="close(index, org.id)" v-if="active"></el-button>
       </div>
-      <el-button type="text" @click="insert(org.id)"> Incluir </el-button>
+      <el-button type="text" @click="insert(org.id)" v-if="active"> Incluir </el-button>
     </div>
 
-    <div v-if="org.type === 'button'" class="pt" :class="active ? 'new new-button' : 'bb'">
+    <div v-if="org.type === 'button'" class="pt" :class="active ? 'new new-button' : ''">
       <div :class="active ? 'aligh-top' : '' ">
-        <el-input v-model="name" class="not-input"></el-input>
+        <el-input v-model="org.name" class="not-input"></el-input>
         <el-button class="el-icon-close" @click="delet(org.id)" v-if="active"></el-button>
       </div>
       <div v-for="i in org.elem" :key="i">
-        <el-button plain :style="{background: `${background}`, color: `${color}`}"> {{ org.text }} </el-button>
+        <el-button plain :style="{background: `${background}`, color: `${color}`}">
+          <el-input v-model="org.text" class="not-input"></el-input>
+        </el-button>
       </div>
     </div>
 
@@ -112,11 +114,10 @@ export default {
   padding: 25px;
   resize: both;
   overflow: auto;
-  border: 1px gray dotted;
 }
 
 .new:hover {
-  cursor: crosshair;
+  border: 1px gray dotted;
 }
 
 .new-input {

@@ -26,7 +26,7 @@
         </div>
       </draggable>
       </div>
-    <el-footer>Footer</el-footer>
+    <!-- <el-footer>Footer</el-footer> -->
     </el-main>
   </el-container>
 </template>
@@ -114,7 +114,7 @@ body {
   padding: 0px;
 }
 
-.bb {
+/* .bb {
   border-bottom: 3px gray dotted;
   padding-bottom: 30px ;
 }
@@ -127,11 +127,11 @@ body {
   padding: 25px;
   resize: both;
   overflow: auto;
-  border: 1px gray dotted;
 }
 
 .new:hover {
   cursor: crosshair;
+  border: 1px gray dotted;
 }
 
 .new-input {
@@ -147,7 +147,7 @@ body {
 
 .name {
   padding-bottom: 20px;
-}
+} */
 
 .aligh-top {
   display: flex;
